@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS })
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -42,6 +43,7 @@ public class UserController {
         if(autheticatedUser != null) {
             LoginResponse loginResponse = new LoginResponse();
             loginResponse.setMessage("Login successful");
+            loginResponse.setId(autheticatedUser.getId());
             loginResponse.setJwtToken(userService.createJwtToken(autheticatedUser));
             return ResponseEntity.ok(loginResponse);
         } else {
