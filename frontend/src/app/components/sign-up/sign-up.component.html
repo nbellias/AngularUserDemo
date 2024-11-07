@@ -1,0 +1,56 @@
+<h2>Sign Up</h2>
+<form (ngSubmit)="onSignUp()" #signUpForm="ngForm">
+
+  <mat-form-field>
+    <mat-label>Username (Email)</mat-label>
+    <input matInput placeholder="Enter your email" [(ngModel)]="user.username" name="username" required email>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Enter your password" [(ngModel)]="user.password" name="password" type="password" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Enter your first name" [(ngModel)]="user.firstname" name="firstname" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Enter your last name" [(ngModel)]="user.lastname" name="lastname" required>
+  </mat-form-field>
+
+  <!-- Add a new field for the user's date of birth -->
+  <mat-form-field>
+    <mat-label>Date of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="Choose your date of birth" [(ngModel)]="user.dateOfBirth" name="dob" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput placeholder="Enter your address" [(ngModel)]="user.address" name="address">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mobile</mat-label>
+    <input matInput placeholder="Enter your mobile number" [(ngModel)]="user.mobile" name="mobile">
+  </mat-form-field>
+
+  <!-- Add a new field for the user's role option box-->
+  <mat-form-field>
+    <mat-label>Role</mat-label>
+    <mat-select [(ngModel)]="user.role" name="role" required>
+      <mat-option value="USER">User</mat-option>
+      <mat-option value="ADMIN">Admin</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+
+  <div *ngIf="signUpError" class="error-message">
+    {{ signUpError }}
+  </div>
+</form>

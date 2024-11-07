@@ -1,0 +1,46 @@
+<h2>User Profile</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field>
+    <mat-label>Username (Email)</mat-label>
+    <input matInput formControlName="username" readonly>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstname" placeholder="Enter your first name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastname" placeholder="Enter your last name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Date of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose your date of birth">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" placeholder="Enter your address">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mobile</mat-label>
+    <input matInput formControlName="mobile" placeholder="Enter your mobile number">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      <mat-option value="ADMIN">Admin</mat-option>
+      <mat-option value="USER">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.dirty">Save Changes</button>
+</form>
+
