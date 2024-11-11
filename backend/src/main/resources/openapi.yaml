@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  title: AngularUserDemo Backend API
+  version: 1.0.0
+
+paths:
+  /api/users/fetch/all:
+    get:
+      summary: List all users
+      responses:
+        '200':
+          description: Successful response

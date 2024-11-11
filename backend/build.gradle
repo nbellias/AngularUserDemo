@@ -45,3 +45,28 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+openApiGenerate {
+	inputSpec = "$projectDir/src/main/resources/openapi.yaml"
+	outputDir = "$projectDir/build/generated"
+	generatorName = "spring"
+	apiPackage = "com.nibelsoft.backend"
+	modelPackage = "com.nibelsoft.backend.model"
+	configOptions = [
+			dateLibrary: "java8",
+			useTags: "true",
+			useBeanValidation: "true",
+			useOptional: "true",
+			useSpringDataAnnotations: "true",
+			useSpringDataRest: "true",
+			useSpringWeb: "true",
+			useSpringFox: "true",
+			useSpringConfig: "true",
+			useSpringBoot: "true",
+			useSpringBootStarter: "true",
+			useSpringBootStarterWeb: "true",
+			useSpringBootStarterTest: "true",
+			useSpringBootStarterDataJpa: "true",
+			useSpringBootStarterDataRestH2: "true"
+	]
+}
